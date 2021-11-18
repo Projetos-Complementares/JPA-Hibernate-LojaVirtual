@@ -5,6 +5,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
     <persistence-unit name="loja" transaction-type="RESOURCE_LOCAL">
+        <class>src.main.java.models.Produto</class>
         <properties>
             <property name="javax.persistence.jdbc.drive" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:nem:loja"/>
