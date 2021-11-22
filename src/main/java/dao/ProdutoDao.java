@@ -14,4 +14,9 @@ public class ProdutoDao {
     }
 
     public void update(Produto produto){ this.manager.merge(produto);}
+
+    public void remove(Produto produto){
+        produto = manager.merge(produto);
+        this.manager.remove(produto);
+    };
 }

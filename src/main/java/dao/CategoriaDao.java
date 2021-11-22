@@ -14,4 +14,9 @@ public class CategoriaDao {
     }
 
     public void update(CategoryItem categoryItem){this.manager.merge(categoryItem);}
+
+    public void remove(CategoryItem categoryItem){
+        categoryItem = manager.merge(categoryItem);
+        this.manager.remove(categoryItem);
+    }
 }
