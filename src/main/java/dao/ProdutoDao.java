@@ -1,4 +1,4 @@
-package Dao;
+package dao;
 
 import lombok.AllArgsConstructor;
 import models.Produto;
