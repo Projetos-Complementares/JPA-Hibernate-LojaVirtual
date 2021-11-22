@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import models.CategoryItem;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @AllArgsConstructor
 public class CategoriaDao {
@@ -18,5 +19,12 @@ public class CategoriaDao {
     public void remove(CategoryItem categoryItem){
         categoryItem = manager.merge(categoryItem);
         this.manager.remove(categoryItem);
+    }
+
+    public CategoryItem findById(long id){ return manager.find(CategoryItem.class, id);}
+
+    public List<CategoryItem> findAll(){
+        String jpql = "SELECT item FROM CategoryItem item";
+        return manager.createQuery(jpql, CategoryItem.class).getResultList();
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import models.Produto;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @AllArgsConstructor
 public class ProdutoDao {
@@ -18,5 +19,14 @@ public class ProdutoDao {
     public void remove(Produto produto){
         produto = manager.merge(produto);
         this.manager.remove(produto);
-    };
+    }
+
+    public Produto findById(long id){
+        return manager.find(Produto.class, id);
+    }
+
+    public List<Produto> findAll(){
+        String jpql = "SELECT p FROM Produto p";
+        return manager.createQuery(jpql, Produto.class).getResultList();
+    }
 }
