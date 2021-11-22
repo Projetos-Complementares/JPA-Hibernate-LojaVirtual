@@ -1,8 +1,10 @@
+package testes;
+
+import Dao.ProdutoDao;
+import Util.JPAUtil;
 import models.Produto;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
 
 public class CadastraProduto {
@@ -12,11 +14,11 @@ public class CadastraProduto {
         celular.setDescricao("Otimas configurações");
         celular.setPreco(new BigDecimal("1249"));
 
-        EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("loja");
-        EntityManager manager = managerFactory.createEntityManager();
+        EntityManager manager = JPAUtil.createEntityManager();
 
+        ProdutoDao dao = new ProdutoDao(manager);
         manager.getTransaction().begin();
-        manager.persist(celular);
+        dao.inserir(celular);
         manager.getTransaction().commit();
         manager.close();
     }
