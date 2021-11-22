@@ -12,4 +12,6 @@ public class ProdutoDao {
     public void inserir(Produto produto){
         this.manager.persist(produto);
     }
+
+    public void update(Produto produto){ this.manager.merge(produto);}
 }

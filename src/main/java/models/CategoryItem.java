@@ -1,13 +1,14 @@
 package models;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "categorias")
+@NoArgsConstructor
 public class CategoryItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

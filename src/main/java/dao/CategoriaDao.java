@@ -12,4 +12,6 @@ public class CategoriaDao {
     public void insert(CategoryItem category){
         this.manager.persist(category);
     }
+
+    public void update(CategoryItem categoryItem){this.manager.merge(categoryItem);}
 }
