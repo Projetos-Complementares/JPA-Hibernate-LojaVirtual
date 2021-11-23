@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import models.Produto;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -35,5 +36,12 @@ public class ProdutoDao {
         return manager.createQuery(jpql, Produto.class)
                 .setParameter("nome", name)
                 .getResultList();
+    }
+
+    public BigDecimal findByPriceOfProduct(String name){
+        String jpql = "SELECT p.preco FROM Produto p WHERE p.nome = :nome";
+        return manager.createQuery(jpql, BigDecimal.class)
+                .setParameter("nome", name)
+                .getSingleResult();
     }
 }
