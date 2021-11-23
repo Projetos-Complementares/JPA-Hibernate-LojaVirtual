@@ -29,4 +29,11 @@ public class ProdutoDao {
         String jpql = "SELECT p FROM Produto p";
         return manager.createQuery(jpql, Produto.class).getResultList();
     }
+
+    public List<Produto> findByCategory(String name){
+        String jpql = "SELECT p FROM Produto p WHERE p.category.nome = :nome";
+        return manager.createQuery(jpql, Produto.class)
+                .setParameter("nome", name)
+                .getResultList();
+    }
 }

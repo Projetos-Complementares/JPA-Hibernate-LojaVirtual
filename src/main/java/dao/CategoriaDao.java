@@ -27,4 +27,11 @@ public class CategoriaDao {
         String jpql = "SELECT item FROM CategoryItem item";
         return manager.createQuery(jpql, CategoryItem.class).getResultList();
     }
+
+    public List<CategoryItem> findByName(String name){
+        String jpql = "SELECT item FROM CategoryItem item WHERE item.category = :name";
+        return manager.createQuery(jpql, CategoryItem.class)
+                .setParameter("name", name)
+                .getResultList();
+    }
 }
